@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
 
-# Create your views here.
+from vertical_video.models import VerticalVideo
+
 def index(request):
-    return render(request, "index.html", {})
+
+    all_videos = VerticalVideo.objects.all()
+
+    return render(request, "index.html", {"videos": all_videos})
